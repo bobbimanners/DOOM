@@ -1,3 +1,8 @@
+Fork of Linux DOOM, with one small change to Soundserver as follows:
+
+- Convert samples from 16 bit signed to 8 bit unsigned for Soundblaster Pro.
+
+-----------------------------------
 
 Here it is, at long last.  The DOOM source code is released for your
 non-profit use.  You still need real DOOM data to work with this code.
