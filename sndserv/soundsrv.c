@@ -386,8 +386,18 @@ grabdata
 	    S_sfx[i].data = getsfx(S_sfx[i].name, &lengths[i]);
 	    if (longsound < lengths[i]) longsound = lengths[i];
 	} else {
-	    S_sfx[i].data = S_sfx[i].link->data;
 	    lengths[i] = lengths[(S_sfx[i].link - S_sfx)/sizeof(sfxinfo_t)];
+	    S_sfx[i].data = malloc(lengths[i]);
+	    memcpy(S_sfx[i].data, S_sfx[i].link->data, lengths[i]);
+	}
+	{
+	    // Convert to 8 bit unsigned
+	    int j;
+	    unsigned char *s = S_sfx[i].data;
+	    lengths[i] /= 2;
+	    for (j=0; j<lengths[i]; ++j) {
+	        s[j] = s[j*2+1] / 2 + 128;
+	    }
 	}
 	// test only
 	//  {

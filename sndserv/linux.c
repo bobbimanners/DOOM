@@ -91,10 +91,10 @@ I_InitSound
     myioctl(audio_fd, SNDCTL_DSP_STEREO, &i);
             
     myioctl(audio_fd, SNDCTL_DSP_GETFMTS, &i);
-    if (i&=AFMT_S16_LE)    
+    if (i&=AFMT_U8)    
         myioctl(audio_fd, SNDCTL_DSP_SETFMT, &i);
     else
-        fprintf(stderr, "Could not play signed 16 data\n");
+        fprintf(stderr, "Could not play unsigned 8 bit data\n");
 
 }
 
